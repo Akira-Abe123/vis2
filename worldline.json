@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Global CO2 Emissions per Capita (1960-2018)",
+    "width": 900,
+    "height": 500,
+    "data": {
+        "url": 
+        "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/world_co2_emissions_1960-2018_clean.csv"
+    },
+    "mark": "line",
+    "encoding": {
+        "x": {
+            "field": "Year", 
+            "type": "temporal", 
+            "axis": {
+                "tickCount": 10,
+                "grid": false
+                }
+            },
+        "y": {"field": "CO2_per_capita", "type": "quantitative"}
+    }
+}
+    

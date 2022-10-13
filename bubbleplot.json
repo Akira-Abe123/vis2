@@ -1,0 +1,138 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 600,
+  "title": "CO2 per capita around the world against Landmass and GDP per capita",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/Bubble_plot_data.csv"
+  },
+  "params": [
+    {
+            "name": "Year_selection",
+            "value": 2018,
+            "bind": {
+                "input": "range",
+                "min": 1990,
+                "max": 2018,
+                "step": 1,
+                "name": "Year: "
+            }
+        },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.GDP_per_capita != 0"},
+    {"filter": "datum.GDP_per_capita != null"},
+    {"filter": "datum.Year == Year_selection"},
+    {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
+    
+  ],
+  "encoding": {
+    "x": {
+      "field": "GDP_per_capita",
+      "type": "quantitative",
+      "title": "GDP per capita (USD)",
+      "axis": {"tickCount": 3},
+      "scale": {"type": "log", "domain": [200, 200000]}
+    },
+    "y": {
+      "field": "Landmass",
+      "type": "quantitative",
+      "title": "Landmass (sq km)",
+      "axis": {"tickCount": 5},
+      "scale": {"type": "log", "domain": [500, 50000000]}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "size": {
+"field": "CO2_per_capita",
+"type": "quantitative",
+"title": "CO2 per capita (tonnes)",
+"scale": {
+"type": "threshold",
+"domain": [1, 5, 10, 15, 20],
+"range": [50, 250, 1000, 2000, 3000, 5000]
+}},
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Country", "type": "nominal", "title": "County"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"},
+          {"field": "GDP_per_capita", "type": "quantitative", "title": "GDP per capita (USD)", "format": ","},
+          {"field": "CO2_per_capita", "type": "quantitative", "title": "CO2 per capita (tonnes)", "format": ","},
+          {"field": "Year", "type": "quantitative"},
+          {"field": "Landmass", "type": "quantitative", "title": "Landmass (sq km)", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Italy' || datum['Country'] == 'Yemen' ||  datum['Country'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ]
+}
