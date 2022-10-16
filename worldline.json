@@ -9,7 +9,7 @@
     },
     "mark": {
         "type": "line",
-        "strokeWidth": 4
+        "strokeWidth": 3
     },
     "encoding": {
         "x": {
