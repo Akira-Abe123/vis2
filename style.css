@@ -35,15 +35,25 @@
 
 /* Regular calssification of text elements*/
 
-h1{font-size: 56px;}
+h1 {
+	font-size: 56px;
+	font-family: 'Montserrat', sans-serif;
+}
 
-h2{font-size: 42px;}
+h2 {
+	font-size: 42px;
+	font-family: 'Montserrat', sans-serif;
+}
 
-p{font-size: large;}
+p {
+	font-size: large;
+	font-family: 'Montserrat', sans-serif;
+}
 
 
 /* column formatting */
 .column-format{
+	font-family: 'Montserrat', sans-serif;
 	width: 1200px;
 	padding: 0px;
 	background-color: rgb(248, 244, 244);
@@ -51,6 +61,7 @@ p{font-size: large;}
 
 /* paragraph formatting */ 
 .center-justified-p {
+	font-family: 'Montserrat', sans-serif;
 	text-align: justify;
 	margin: 0 auto;
 	width: 30em;
@@ -59,18 +70,21 @@ p{font-size: large;}
   }
 
 .colour-page{
+	font-family: 'Montserrat', sans-serif;
 	color: tomato;
 }
 
 .textbox{
-
+	font-family: 'Montserrat', sans-serif;
 	margin: 30px;
 	padding: 20px;
 	text-align: justify;
 }
 
 .title{
+	font-family: 'Montserrat', sans-serif;
 	background-color: rgb(244, 203, 196);
+	font-weight: bolder;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-right: 10px;
@@ -78,20 +92,24 @@ p{font-size: large;}
 }
 
 .subtitle{
+	font-family: 'Montserrat', sans-serif;
 	background-color: rgb(236, 135, 117);
 	padding: 1px;
 	margin-bottom: 20px;
 }
 
 .blank{
+	font-family: 'Montserrat', sans-serif;
 	background-color: rgb(244, 203, 196);
 	height: 60px;
 }
 
 .reference{
+	font-family: 'Montserrat', sans-serif;
 	color: lightgray;
 	font-size: small;
 	text-align: left;
 	padding-left: 30px;
 	padding-bottom: 10px;
 }
+
