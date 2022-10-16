@@ -4,7 +4,7 @@
     "width": 400,
     "height": 300,
     "data": {
-      "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/CO2_1949-2020_clean.csv"
+      "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/data/CO2_1949-2020_clean.csv"
     },
     "params": [
       {

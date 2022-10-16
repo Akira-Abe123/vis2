@@ -4,8 +4,7 @@
     "width": 400,
     "height": 300,
     "data": {
-        "url": 
-        "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/all_yrs_co2_world.csv"
+        "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/data/all_yrs_co2_world.csv"
     },
     "mark": {
         "type": "line",

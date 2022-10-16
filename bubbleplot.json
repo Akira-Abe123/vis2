@@ -9,7 +9,7 @@
     "dy": -15
     },
   "data": {
-    "url": "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/Bubble_plot_data.csv"
+    "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/data/Bubble_plot_data.csv"
   },
   "params": [
     {
