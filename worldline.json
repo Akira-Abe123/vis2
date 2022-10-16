@@ -7,7 +7,10 @@
         "url": 
         "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/all_yrs_co2_world.csv"
     },
-    "mark": "line",
+    "mark": {
+        "type": "line",
+        "strokeWidth": 4
+    },
     "encoding": {
         "x": {
             "field": "Year", 
@@ -18,10 +21,10 @@
                 "format": ".0f"
                 }
             },
-        "y": {"field": "CO2_in_t", "type": "quantitative", "title":"CO2 Emissions (t)", "axis":{"format": ".1e"}},
+        "y": {"field": "CO2_in_t", "type": "quantitative", "title":"CO2 Emissions (millions of tonnes)"},
         "tooltip": [
             {"field": "Year", "type": "quantitative", "title": "Year"},
-            {"field": "CO2_in_t", "type": "quantitative", "title": "CO2 emissions (t)", "format": ","}
+            {"field": "CO2_in_t", "type": "quantitative", "title": "CO2 (millions of tonnes)", "format": ","}
         ]
     },
     "config": {"background": "rgb(248, 244, 244)", "title": {"font": "sans-serif", "fontSize": 23}}
