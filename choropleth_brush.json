@@ -1,0 +1,173 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/long_format_co2_by_yr_full.csv"
+    },
+    "transform": [{"filter": "datum.Year > 1989"},
+                  {
+                      "lookup": "Country",
+                      "from": {
+                          "data": {
+                              "url": "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/ne_110m%20(1).json",
+                              "format": {
+                                  "type": "topojson",
+                                  "feature": "ne_110m_admin_0_countries"
+                              }
+                          },
+                          "key": "properties.NAME"
+                      },
+                      "as": "geo"
+                  }
+                  
+              ],
+    "params": [
+          {
+              "name": "zoom_level",
+              "value": 150,
+              "bind": {
+                  "input": "range",
+                  "min": 150,
+                  "max": 1000,
+                  "step": 50,
+                  "name": "Zoom: "
+              }
+          },
+          {
+              "name": "center_to",
+              "value": [20,90],
+              "bind": {
+                  "input": "select",
+                  "options": [
+                      [0,0],
+                      [11,90],
+                      [-130,80.5],
+                      [-60, 13],
+                      [13, 40],
+                      [25,7],
+                      [75,126],
+                      [132,130],
+                      [107,29],
+                      [160,-6]
+                  ],
+                  "labels": ["Center of Map", "Europe", "North America", "South America", "Northern Africa", "Southern Africa","West Asia and the Middle East","East Asia","South Asia","Oceania"],
+                  "name": "Map Center: "
+              }
+          }
+      ],
+    "vconcat": [
+      {
+        "width": 800,
+        "height": 400,
+        "title": {
+            "text": "CO2 per Capita by Country (1990-2018)", 
+            "fontSize": 23,
+            "dx": 80,
+            "dy": -15
+            },
+        "projection": {"type": "equalEarth",
+          "center": {"expr": "center_to"},
+          "scale": {"expr": "zoom_level"}},
+        "layer": [
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+              "format": {
+                "type": "topojson",
+                "feature": "ne_110m_admin_0_countries"
+              }
+            },
+            "transform": [
+              {"filter": "datum.CO2_per_capita == null"},
+              {"calculate": "'Data is not available in ' + datum.properties.NAME","as": "note"}
+              ],
+            "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "black", "strokeWidth": 0.1},
+            "encoding": {"tooltip": {"field": "note"}}
+          },
+          {
+            "transform": [{"filter": {"param": "time_brush"}}],
+              "encoding": { 
+                  "shape": {"field": "geo", "type": "geojson"},
+                  "color": {
+                      "field": "CO2_per_capita",
+                      "title": "CO2 =capita (t)",
+                      "type": "quantitative",
+                      "scale": {
+                          "type": "threshold",
+                          "domain": [0.5, 2.5, 5, 10, 15],
+                          "range": [
+                              "#fee5d9",
+                              "#fcbba1",
+                              "#fc9272",
+                              "#fb6a4a",
+                              "#de2d26",
+                              "#a50f15"
+                          ]
+                      }
+                  },
+                  "tooltip": [
+                      {"field": "Country", "type": "nominal", "title": "Country"},
+                      {"field": "CO2_per_capita", "type": "quantitative", "title": "CO2 per capita", "format": ".2f"}
+                  ]
+              },
+            "layer": [
+              {"mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.1}}
+            ]
+          }
+        ]
+      },
+      {
+        "width": 800,
+        "height": 60,
+        "title": {
+            "text": "Hover over the linegraph below to change the year shown on the map above", 
+            "color": "grey",
+            "dy": -5, 
+            "subtitle": "Global CO2 emissions form 1990 to 2018",
+            "subtitlePadding": 2},
+        "transform": [{"filter": "datum.Country == 'World'"}],
+        "encoding": {
+          "x": {"field": "Year", "type": "quantitative", "axis": {"format": ".0f", "titleFontWeight": 500}}},
+        "layer":[{
+        "encoding": {
+          "y": {
+            "field": "CO2_per_capita",
+            "type": "quantitative",
+            "title": "CO2 per Capita (t)",
+            "axis": {"titleFontWeight": 500}
+          }
+        },"layer": [
+          {"mark": "line"},
+          {
+            "transform": [{"filter": {"param": "time_brush", "empty": false}}],
+            "mark": "point"
+          }
+        ]
+      },{
+        "mark": "rule",
+        "encoding": {
+          "opacity": {
+            "condition": {"value": 0.3, "param": "time_brush", "empty": false},
+            "value": 0
+          },
+          "tooltip": [
+            {"field": "Year", "type": "quantitative"},
+            {"field": "CO2_per_capita", "type": "quantitative", "title": "CO2 per capita (t)", "format": ".2f"}
+          ]
+        },
+        "params": [
+          {
+            "name": "time_brush",
+            "select": {
+              "type": "point",
+              "fields": ["Year"],
+              "nearest": true,
+              "on": "mouseover"
+            }
+          }
+        ]
+      }
+      ]  
+      }
+    ],
+    "config": {"background": "rgb(248, 244, 244)", "title": {"font": "sans-serif", "fontSize": 18}}
+  }

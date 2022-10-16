@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Global CO2 Emissions by Continent (1900-2020)",
+    "width": 400,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/CO2_1949-2020_clean.csv"
+    },
+    "params": [
+      {
+              "name": "Year_selection",
+              "value": 2020,
+              "bind": {
+                  "input": "range",
+                  "min": 1900,
+                  "max": 2020,
+                  "step": 1,
+                  "name": "Year: "
+              }
+          }],
+    "mark": "arc",
+    "transform": [
+      {"filter": "datum.Continent != 'Oceania'"},
+      {"filter": "datum.Continent != 'South America'"},
+      {"filter": "datum.Continent != 'Africa'"},
+      {"filter": "datum.Year == Year_selection"}
+      ],
+    "encoding": {
+      "theta": {"field": "percent", "type": "quantitative"},
+      "color": {"field": "Continent", "type": "nominal"},
+      "tooltip": [
+            {"field": "Continent", "type": "nominal", "title": "Continent"},
+            {"field": "percent", "type": "quantitative", "title": "Percentage of emissions", "format": ".2f"},
+            {"field": "Year", "type": "quantitative"}
+          ]
+    },
+    "config": {"background": "rgb(248, 244, 244)", "title": {"font": "sans-serif", "fontSize": 18}, "view": {"stroke": "transparent"}}
+  }
+  

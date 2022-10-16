@@ -1,8 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": 800,
   "height": 600,
-  "title": "CO2 per capita around the world against Landmass and GDP per capita",
+  "title": {
+    "text": "CO2 per Capita vs Landmass vs GDP per capita", 
+    "fontSize": 30,
+    "dx": 80,
+    "dy": -15
+    },
   "data": {
     "url": "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/Bubble_plot_data.csv"
   },
@@ -127,12 +132,13 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Italy' || datum['Country'] == 'Yemen' ||  datum['Country'] == 'United States'",
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Qatar' || datum['Country'] == 'Australia' || datum['Country'] == 'Kuwait' || datum['Country'] == 'Luxembourg' || datum['Country'] == 'Trinidad and Tobago'",
             "value": 1
           },
           "value": 0
         }
       }
     }
-  ]
+  ],
+  "config": {"background": "rgb(248, 244, 244)", "title": {"font": "sans-serif", "fontSize": 23}}
 }

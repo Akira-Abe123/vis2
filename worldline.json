@@ -1,23 +1,29 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Global CO2 Emissions per Capita (1960-2018)",
-    "width": 900,
-    "height": 500,
+    "title": "Global CO2 Emissions in tonnes (1750-2020)",
+    "width": 400,
+    "height": 300,
     "data": {
         "url": 
-        "https://raw.githubusercontent.com/Akira-Abe123/Homework10/main/world_co2_emissions_1960-2018_clean.csv"
+        "https://raw.githubusercontent.com/Akira-Abe123/vis2/main/all_yrs_co2_world.csv"
     },
     "mark": "line",
     "encoding": {
         "x": {
             "field": "Year", 
-            "type": "temporal", 
+            "type": "quantitative", 
             "axis": {
                 "tickCount": 10,
-                "grid": false
+                "grid": false,
+                "format": ".0f"
                 }
             },
-        "y": {"field": "CO2_per_capita", "type": "quantitative"}
-    }
+        "y": {"field": "CO2_in_t", "type": "quantitative", "title":"CO2 Emissions (t)", "axis":{"format": ".1e"}},
+        "tooltip": [
+            {"field": "Year", "type": "quantitative", "title": "Year"},
+            {"field": "CO2_in_t", "type": "quantitative", "title": "CO2 emissions (t)", "format": ","}
+        ]
+    },
+    "config": {"background": "rgb(248, 244, 244)", "title": {"font": "sans-serif", "fontSize": 23}}
 }
     

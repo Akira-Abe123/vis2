@@ -1,3 +1,97 @@
+/* special word formats */
 .asia{
-	color: blue;
+	color: #5384b4;
+}
+
+.europe{
+	color: #f98f00;
+}
+
+.north-america{
+	color: #eb615d;
+}
+
+.other{
+	color: #7abfbb;
+}
+
+.south-america{
+	color: #9467bd;
+}
+
+.africa{
+	color: #aec7e8;
+}
+
+.bold{
+	font-weight: 700;
+}
+
+/* page formatting*/
+.page-format{
+	padding: 0px;
+	margin: 0px;
+}
+
+/* Regular calssification of text elements*/
+
+h1{font-size: 56px;}
+
+h2{font-size: 42px;}
+
+p{font-size: large;}
+
+
+/* column formatting */
+.column-format{
+	width: 1200px;
+	padding: 0px;
+	background-color: rgb(248, 244, 244);
+}
+
+/* paragraph formatting */ 
+.center-justified-p {
+	text-align: justify;
+	margin: 0 auto;
+	width: 30em;
+	padding: 30px;
+	margin: 30px;
+  }
+
+.colour-page{
+	color: tomato;
+}
+
+.textbox{
+
+	margin: 30px;
+	padding: 20px;
+	text-align: justify;
+}
+
+.title{
+	background-color: rgb(244, 203, 196);
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 8px;
+}
+
+.subtitle{
+	background-color: rgb(236, 135, 117);
+	padding: 1px;
+	margin-bottom: 20px;
+}
+
+.blank{
+	background-color: rgb(244, 203, 196);
+	height: 60px;
+}
+
+.reference{
+	color: lightgray;
+	font-size: small;
+	text-align: left;
+	padding-left: 30px;
+	padding-bottom: 10px;
 }

@@ -1,42 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>CO2 Emissions Around the World </title>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Global Carbondioxide Emissions throught History </title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-        <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-        <script src="vis2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vis2.js"></script>
 
-        <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css"
+        integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: rgb(244, 203, 196)
+        }
+    </style>
 
-        <title>Carbon dioxide emissions per Capita</title>
-    </head>
-    <body>
-        <center>
-            <h1>Carbon dioxide emissions per Capita</h1>
+    <title>Carbon dioxide emissions per Capita</title>
+</head>
+
+<body class="page-format">
+    <center>
+        <div class="column-format">
+            <!--Title-->
+            <div class="title">
+                <h1>
+                    Carbon Dioxide Trends Around the World
+                </h1>
+            </div>
+
+            <div class="subtitle">
+                <h2>
+                    Global Trends
+                </h2>
+            </div>
+
+            <!--linegraph and intro text Section-->
+            <div class="pure-g">
+                <div class="pure-u-2-24"> <br> </div>
+                <div class="pure-u-10-24">
+                    <div id="line"></div>
+                </div>
+
+                <div class="pure-u-10-24" class="textbox">
+                    <div class="textbox">
+                        <p> Carbon dioxide is a potent greenhouse gas that is
+                            produced when fossil fuels are burnt. Carbon dioxide contributes to 
+                            the greenhouse effect which leads to global warming and climate change<br> 
+                            <br>
+                            Significant increases in global emissions began around the end of 
+                            World War II when global travel, energy consumption and agriculture 
+                            dramatically increased. <br> 
+                            <br>
+                            Since 1990, the world has produced <span class="bold"> 116.13 billion tonnes</span>
+                            of CO2 has been released into the atmosphere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Choropleth map section-->
+            <p>
+                <br>
+            </p>
             <div id="map"></div>
-            <p>
-                The map above displays carbondioxide emissions per capita around the <br/>
-                world between the years 1960 and 2018
+            <p class="center-justified-p">
+                Use the "Zoom" and "Map Center" functions to explore the map in detail <br>
+                <br>
+                <span class="bold"> Most countries produced between 0 and 10 tonnes per capita</span> with only 
+                a handfull of countries with emissions higher than 15 tonnes per capita.
+                The <span class="bold">highest</span> CO2 per capita was recoded in <span class="bold">2005</span> 
+                in <span class="asia">Qatar</span> at 47.7 tonnnes per capita
+                
             </p>
-            <div id="line"></div>
+
+            <div class="blank">
+                <br>
+            </div>
+
+            <div class="subtitle">
+                <h2>
+                    Continental Trends
+                </h2>
+            </div>
+
+            <!--Pie chart section-->
+            <div class="pure-g">
+                <div class="pure-u-2-24"> <br> </div>
+                <div class="pure-u-10-24">
+                    <div id="pie"></div>
+                </div>
+
+                <div class="pure-u-10-24" class="textbox">
+                    <div class="textbox">
+                        <p> <span class = "europe">Europe</span> and 
+                            <span class="north-america">North America</span> were 
+                            the <span class="bold">main contributors</span> of 
+                            carbon dioxide emissions <span class="bold">in the 
+                            1900s</span> making up at least 50% combined. <br> 
+                            <br> 
+                            However, since 2000, the main contributor 
+                            has become <span class="asia">Asia</span> which made up 
+                            <span class="bold">60% of emsisions in 2020</span> . <br>
+                            <br>
+                            This may be do to the increased economic growth that 
+                            <span class="asia">Asian</span> countries experienced throughout the 2000's and 
+                            the increased demand for fossil fuels as <Span class="asia">Asian</Span> populations grew
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Bubble plot section-->
             <p>
-                The map above displays global carbondioxide emissions per capita between <br/> 
-                the years 1960 and 2018
+                <br>
             </p>
-            <div id="bubble"></div>
+
+            <div class="graph=format" id="bubble"></div>
+            <p class="center-justified-p">
+                The plot above highlights a positive correlation between GDP per capita 
+                and CO2 per capita indicating that <span class="bold">wealthier countries 
+                are higher emitters</span>. <br>
+                <br>
+                Conversely, there appears to be little to <span class="bold"> no correlation 
+                </span class="bold"> between <span class="bold">Landmass and CO2 per capita</span>. 
+                This is mainly due to the normalisation by population that the data has gone through. <br>
+                <br>  
+                <span class='asia'>Asian</span> countries such as <span class='asia'>Qatar</span> and <span class='asia'>Kuwait</span>
+                have extremely high per capita emissions due to large scale oil refinement 
+                processes and a small populations. <br>
+                Similarly, extremely small countries such as <span class="europe">Luxenburg</span> 
+                and <span class="south-america">Trinidad and Tabago</span> have a high
+                emission per capita due to a small population and emissions that may come from transport.
+            </p>
+            <div class="reference">
             <p>
-                The map above displays global carbondioxide emissions per capita between <br/> 
-                the years 1960 and 2018 <br/> 
-                <br/>
-                <span class = 'asia'>Asian</span> countries such as Quatar and the UAE have extremely <br/> high emissions due to oil refinement processes.
+                <br>
+                Data sources: <br>
+                https://ourworldindata.org/co2-emissions <br>
+                https://data.worldbank.org/indicator/AG.LND.TOTL.K2 <br>
+                https://www.kaggle.com/datasets/kkhandekar/co2-emissions-1960-2018 <br>
+                https://www.kaggle.com/datasets/nitishabharathi/gdp-per-capita-all-countries
+                <br>
             </p>
-            
-        </center>
-    </body>
+            </div>
+        </div>
+    </center>
+</body>
+
 </html>
